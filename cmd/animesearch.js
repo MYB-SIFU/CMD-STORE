@@ -7,7 +7,7 @@ module.exports = {
     name: "animesearch",
     aliases: ["anisar", "anisearch", "animeedit"],
     version: "1.0",
-    author: "Saimx69x",
+    author: "SiFu",
     description: "Search an anime edits video",
     category: "anime",
     role: 0,
@@ -23,7 +23,7 @@ module.exports = {
 
     try {
       
-      const githubRawUrl = "https://raw.githubusercontent.com/Saim-x69x/sakura/main/ApiUrl.json";
+      const githubRawUrl = "https://raw.githubusercontent.com/Ewr-Sifu/sizuka/refs/heads/main/ApiUrl.json";
       const apiRes = await axios.get(githubRawUrl);
       const baseUrl = apiRes.data.apiv1;
 
