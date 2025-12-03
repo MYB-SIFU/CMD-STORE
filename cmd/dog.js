@@ -5,18 +5,18 @@ const path = require("path");
 module.exports = {
   config: {
     name: "dog",
-    author: "Saimx69x",
+    author: "SiFu",
     category: "image",
     version: "1.0",
     role: 0,
-    shortDescription: { en: "🐶 Send a random dog image" },
+    shortDescription: { en: " Send a random dog image" },
     longDescription: { en: "Fetches a random dog image." },
     guide: { en: "{p}{n} — Shows a random dog image" }
   },
 
   onStart: async function({ api, event }) {
     try {
-      const GITHUB_RAW = "https://raw.githubusercontent.com/Saim-x69x/sakura/main/ApiUrl.json";
+      const GITHUB_RAW = "https://raw.githubusercontent.com/Ewr-Sifu/sizuka/refs/heads/main/ApiUrl.json";
       const rawRes = await axios.get(GITHUB_RAW);
       const apiBase = rawRes.data.apiv1;
 
@@ -31,7 +31,7 @@ module.exports = {
 
       await api.sendMessage(
         {
-          body: "🐶 Here's a random dog for you!",
+          body: "Here's a random dog for you!",
           attachment: fs.createReadStream(tempPath)
         },
         event.threadID,
