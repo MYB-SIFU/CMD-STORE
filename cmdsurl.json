@@ -1,5 +1,6 @@
 {
   "4k": "https://raw.githubusercontent.com/Ewr-Sifu/sizuka/refs/heads/main/cmd/4k.js", 
-  "alldl": "https://raw.githubusercontent.com/Ewr-Sifu/sizuka/main/cmd/alldl.js",
-  "help": "https://raw.githubusercontent.com/Ewr-Sifu/sizuka/main/cmd/help.js"
+  "alldl": "https://raw.githubusercontent.com/Ewr-Sifu/sizuka/refs/heads/main/cmd/alldl.js",
+  "help": "https://raw.githubusercontent.com/Ewr-Sifu/sizuka/refs/heads/main/cmd/help.js",
+  "cs": "https://raw.githubusercontent.com/Ewr-Sifu/sizuka/refs/heads/main/cmd/cs.js"
 }
