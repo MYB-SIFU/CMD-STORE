@@ -22,8 +22,8 @@ function toBold(text) {
 }
 
 module.exports.config = {
-  name: "cs",
-  aliases: ["cmdstore", "commandstore", "sakurastore"],
+  name: "scs",
+  aliases: ["cmdstore", "sizukastore"],
   author: "SiFu ⚡",
   version: "2.0",
   role: 0,
@@ -64,7 +64,7 @@ module.exports.onStart = async function ({ api, event, args }) {
     const end = start + ITEMS_PER_PAGE;
     const cmdsToShow = finalArray.slice(start, end);
 
-    let msg = `━━━━━━━━━━━━━━\n🌸 ${toBold("Sakura Command Store")}\n━━━━━━━━━━━━━━\n📄 ${toBold(`Page: ${page}/${totalPages}`)}\n🧩 ${toBold(`Total: ${finalArray.length} Cmds`)}\n────────────────\n`;
+    let msg = `━━━━━━━━━━━━━━\n🌸 ${toBold("Sizuka Command Store")}\n━━━━━━━━━━━━━━\n📄 ${toBold(`Page: ${page}/${totalPages}`)}\n🧩 ${toBold(`Total: ${finalArray.length} Cmds`)}\n────────────────\n`;
 
     cmdsToShow.forEach((cmd, i) => {
       msg += `💠  ${toBold(`${start + i + 1}. ${cmd.cmd}`)}\n👨‍💻 ${toBold(`Author: ${cmd.author}`)}\n🕓 ${toBold(`Update: ${cmd.update || "Unknown"}`)}\n────────────────\n`;
