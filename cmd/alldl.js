@@ -74,12 +74,20 @@ module.exports = {
       const platformName = domain.replace(/(\.com|\.app|\.video|\.net)/, "").toUpperCase();
 
       const infoCard = 
-`┍━━━━━━━━━━━━━━━━━━━◊
- [🎀] ᴅʟ ᴄᴏᴍᴘʟᴇᴛᴇ
- [ℹ️] ᴘʟαᴛꜰᴏʀᴍ: ${platformName}
- [🐳] sᴛᴀᴛᴜs : sᴜᴄᴄᴇss
- [👑] ᴏᴡɴᴇʀ: ꜱɪꜰᴜ 
-┕━━━━━━━━━━━━━━━━━━━━◊`;
+`╭────────🎀────────╮
+      𝐀𝐔𝐓𝐎 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑
+╰────────🎀────────╯
+
+      ❒  ᴅʟ ᴄᴏᴍᴘʟᴇᴛᴇ
+      ❒  ᴘʟαᴛꜰᴏʀᴍ: ${platformName}
+      ❒   sᴛᴀᴛᴜs : sᴜᴄᴄᴇss
+      ❒  ᴏᴡɴᴇʀ: ꜱɪꜰᴜ
+
+       ✨ 𝐄𝐧𝐣𝐨𝐲 𝐲𝐨𝐮𝐫 𝐦𝐞𝐝𝐢𝐚!
+━━━━━━━━━━━━━━━━━━━━
+        ♡—͟͞͞🌊 ʸᵒᵘʳ sɪᴢᴜ 🦋 ⸙
+ 
+`;
 
       api.sendMessage(
         { body: infoCard, attachment: fs.createReadStream(filePath) },
