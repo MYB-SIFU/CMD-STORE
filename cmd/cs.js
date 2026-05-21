@@ -2,9 +2,9 @@ const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
 
-const cmdsInfoUrl = "https://raw.githubusercontent.com/Ewr-Sifu/sizuka/main/cmdsinfo.json";
-const cmdsUrlJson = "https://raw.githubusercontent.com/Ewr-Sifu/sizuka/main/cmdsurl.json";
-const fontUrl = "https://raw.githubusercontent.com/Ewr-Sifu/sizuka/main/xfont.json";
+const cmdsInfoUrl = "https://raw.githubusercontent.com/Ewr-Sifu/CMD-STORE/main/cmdsinfo.json";
+const cmdsUrlJson = "https://raw.githubusercontent.com/Ewr-Sifu/CMD-STORE/main/cmdsurl.json";
+const fontUrl = "https://raw.githubusercontent.com/Ewr-Sifu/CMD-STORE/main/xfont.json";
 const ITEMS_PER_PAGE = 10;
 
 let fontMap = {};
@@ -23,7 +23,7 @@ function toBold(text) {
 
 module.exports.config = {
   name: "cs",
-  aliases: ["cmdstore", "commandstore", "sizukastore"],
+  aliases: ["cmdstore"],
   author: "SiFu",
   version: "2.0",
   role: 0,
@@ -64,7 +64,7 @@ module.exports.onStart = async function ({ api, event, args }) {
     const end = start + ITEMS_PER_PAGE;
     const cmdsToShow = finalArray.slice(start, end);
 
-    let msg = `━━━━━━━━━━━━━━\n🌸 ${toBold("sizukaCommand Store")}\n━━━━━━━━━━━━━━\n📄 ${toBold(`Page: ${page}/${totalPages}`)}\n🧩 ${toBold(`Total: ${finalArray.length} Cmds`)}\n────────────────\n`;
+    let msg = `━━━━━━━━━━━━━━\n🌸 ${toBold("CMD-STORE")}\n━━━━━━━━━━━━━━\n📄 ${toBold(`Page: ${page}/${totalPages}`)}\n🧩 ${toBold(`Total: ${finalArray.length} Cmds`)}\n────────────────\n`;
 
     cmdsToShow.forEach((cmd, i) => {
       msg += `💠  ${toBold(`${start + i + 1}. ${cmd.cmd}`)}\n👨‍💻 ${toBold(`Author: ${cmd.author}`)}\n🕓 ${toBold(`Update: ${cmd.update || "Unknown"}`)}\n────────────────\n`;
