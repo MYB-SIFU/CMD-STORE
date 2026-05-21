@@ -7,26 +7,68 @@
     "status": "on"
   },
   {
-    "cmd": "alldl",
-    "author": "SiFu",
-    "update": "2025-12-09",
-    "status": "on"
-  },
-  {
-    "cmd": "4k",
-    "author": "SiFu",
-    "update": "2025-12-09",
+    "cmd": "txtfx",
+    "author": "SIFAT",
+    "update": "2026-05-18",
     "status": "on"
   },
     {
-    "cmd": "raw",
-    "author": "SiFu",
-    "update": "2025-12-09",
+    "cmd": "font",
+    "author": "SIFAT",
+    "update": "2026-05-20",
     "status": "on"
+  },
+  {
+    "cmd": "ytb",
+    "author": "SIFAT",
+    "update": "2026-05-18",
+    "status": "on"
+  },
+  {
+    "cmd": "sing",
+    "author": "SIFAT",
+    "update": "2026-05-18",
+    "status": "on"
+  },
+   {
+    "cmd": "album",
+    "author": "SIFAT",
+    "update": "2026-05-18",
+    "status": "on"
+  }, 
+  {
+    "cmd": "pastebin",
+    "author": "SIFAT",
+    "update": "2026-05-21",
+    "status": "on"
+  },
+  {
+    "cmd": "alldl",
+    "author": "SIFAT",
+    "update": "2026-05-15",
+    "status": "on"
+  },
+   {
+    "cmd": "prefix",
+    "author": "SIFAT",
+    "update": "2026-05-18",
+    "status": "on"
+  },   
+  {
+    "cmd": "4k",
+    "author": "SIFAT",
+    "update": "2025-12-09",
+    "status": "OFF"
+  },
+    {
+    "cmd": "raw",
+    "author": "SIFAT",
+    "update": "2025-12-09",
+    "status": "OFF"
   },
       {
     "cmd": "help",
-    "author": "SiFu",
+    "author": "SIFAT",
     "update": "2025-12-09",
     "status": "on"
   }
