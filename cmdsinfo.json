@@ -12,7 +12,13 @@
     "update": "2026-05-18",
     "status": "on"
   },
-    {
+  {
+    "cmd": "mvdo",
+    "author": "SIFAT",
+    "update": "2026-05-18",
+    "status": "on"
+  },
+  {
     "cmd": "font",
     "author": "SIFAT",
     "update": "2026-05-20",
