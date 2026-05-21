@@ -7,6 +7,12 @@
     "status": "on"
   },
   {
+    "cmd": "amv",
+    "author": "SiFu",
+    "update": "2025-12-09",
+    "status": "on"
+  },
+  {
     "cmd": "txtfx",
     "author": "SIFAT",
     "update": "2026-05-18",
