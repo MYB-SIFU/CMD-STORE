@@ -3,7 +3,8 @@ const axios   = require("axios");
 const cheerio = require("cheerio");
 const fs      = require("fs-extra");
 const path    = require("path");
-const { createCanvas, loadImage } = require("canvas");
+let createCanvas, loadImage;
+try { ({ createCanvas, loadImage } = require("canvas")); } catch {}
 const ui      = require("../../core/helpers/uiBox");
 
 const CACHE_DIR = path.join(process.cwd(), "core/database/cache/rank");
@@ -264,6 +265,7 @@ function extractCoverFromJsonText(text) {
 }
 
 async function buildRankCardCanvas({ coverBuffer, ppBuffer, username, currentXP, requiredXP, progressPercent, level, rank, totalUsers, tierInfo, status, exp }) {
+    if (!createCanvas || !loadImage) return null;
     const W = 934, H = 282;
     const canvas = createCanvas(W, H);
     const ctx    = canvas.getContext("2d");
@@ -505,25 +507,51 @@ module.exports = {
                 tierInfo,
                 status,
                 exp,
-            });
+            }).catch(() => null);
 
             if (wait?.messageID) safeUnsend(api, wait.messageID);
 
-            const rankFile = path.join(CACHE_DIR, `rank_${uid}_${Date.now()}.png`);
-            await fs.writeFile(rankFile, cardBuffer);
+            const displayName = fbName || username;
+            const xpBar       = "█".repeat(Math.floor(progressPercent / 10)) + "░".repeat(10 - Math.floor(progressPercent / 10));
+            const textBody    = ui.box("🏆 RANK CARD", [
+                ui.kv("Name",     displayName,                                          "👤"),
+                ui.kv("XP",       `${fmtXP(currentXP)} / ${fmtXP(requiredXP)} XP`,    "✨"),
+                ui.kv("Progress", `${xpBar} ${progressPercent}%`,                      "📊"),
+                ui.kv("Rank",     `#${rank} / ${totalUsers}`,                          "🏅"),
+                ui.kv("Level",    `${level}  •  ${tierInfo.tier}`,                     "⭐"),
+                ui.kv("Total XP", fmtXP(exp),                                          "💎"),
+                ui.kv("Cover",    coverBuffer ? "✅" : "❌ Private",                   "🖼️"),
+            ], { footer: `ʀᴀɴᴋ ᴄᴀʀᴅ • RANK #${rank}` });
+
+            const attachments = [];
+            const rankFile    = cardBuffer ? path.join(CACHE_DIR, `rank_${uid}_${Date.now()}.png`) : null;
+            const coverFile   = path.join(CACHE_DIR, `cover_${uid}_${Date.now()}.jpg`);
+            const ppFile      = path.join(CACHE_DIR, `pp_${uid}_${Date.now()}.jpg`);
+
+            if (cardBuffer && rankFile) {
+                await fs.writeFile(rankFile, cardBuffer);
+                attachments.push(fs.createReadStream(rankFile));
+            } else {
+                if (coverBuffer?.length > 500) {
+                    await fs.writeFile(coverFile, coverBuffer);
+                    attachments.push(fs.createReadStream(coverFile));
+                }
+                if (ppBuffer) {
+                    await fs.writeFile(ppFile, ppBuffer);
+                    attachments.push(fs.createReadStream(ppFile));
+                }
+            }
 
             await reply({
-                body: ui.box("🏆 RANK CARD", [
-                    ui.kv("Name",  fbName || username,                             "👤"),
-                    ui.kv("XP",    `${fmtXP(currentXP)} / ${fmtXP(requiredXP)}`,  "✨"),
-                    ui.kv("Rank",  `#${rank} / ${totalUsers}`,                     "🏅"),
-                    ui.kv("Level", `${level}  •  ${tierInfo.tier}`,                "⭐"),
-                    ui.kv("Cover", coverBuffer ? "✅ Used as background" : "❌ Private — dark bg used", "🖼️"),
-                ], { footer: `ʀᴀɴᴋ ᴄᴀʀᴅ • RANK #${rank}` }),
-                attachment: fs.createReadStream(rankFile),
+                body:       textBody,
+                attachment: attachments.length ? attachments : undefined,
             });
 
-            setTimeout(() => fs.remove(rankFile).catch(() => {}), 60_000);
+            setTimeout(() => {
+                if (rankFile)  fs.remove(rankFile).catch(() => {});
+                fs.remove(coverFile).catch(() => {});
+                fs.remove(ppFile).catch(() => {});
+            }, 60_000);
 
         } catch (e) {
             if (wait?.messageID) safeUnsend(api, wait.messageID);
