@@ -4,7 +4,7 @@ const axios = require("axios");
 const fs = require("fs-extra");
 const path = require("path");
 
-const API_BASE = "https://raw.githubusercontent.com/Ewr-Sifu/SIFATChudtese/refs/heads/main/sifatapichudtese.json";
+const API_BASE = "https://raw.githubusercontent.com/myb-sifu/SIFATChudtese/refs/heads/main/sifatapichudtese.json";
 const AUTO_DL = true;
 const AUTO_DL_MODE = "all";
 
